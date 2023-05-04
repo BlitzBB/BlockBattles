@@ -179,6 +179,9 @@ function on_place(event)
         BBAPI.setblock(event.placer, {event.x, event.y, event.z -1 }, "AIR") 
         BBAPI.setblock(event.placer, {event.x, event.y, event.z}, "AIR")
         end
+    elseif event.material == "TNT" then
+        
+        BBPAI.setscene("fireworkwarp")
     end
 end
 
