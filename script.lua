@@ -188,57 +188,34 @@ end
 
 
 
-
-
-
 function counterbraincoral(event)
-    BBAPI.log(BBAPI.getblock(event.placer,{event.x,event.y+1,event.z}))
+    BBAPI.log(BBAPI.getblock(event.placer, {event.x, event.y+1, event.z}))
     BBAPI.log(string.format("x: %s y: %s z: %s", event.x, event.y + 1, event.z))
 
     if BBAPI.getblock(event.placer,{event.x,event.y+1,event.z}) == "IRON_TRAPDOOR" then
         BBAPI.log("coralcounter")
 
-        BBAPI.intime(5.0,counterbraincoral2,event)
+        BBAPI.intime(5.0, counterbraincoral2, event)
 
     else BBAPI.execute("kill "..event.opps.name)
     end
 end
 
 function counterbraincoral2(event)
-    if BBAPI.getblock(event.placer,{event.x,event.y,event.z+1}) == "LEVER" then
-        
-        BBAPI.intime(5.0,counterbraincoral3,event)
-    
-    elseif BBAPI.getblock(event.placer,{event.x,event.y,event.z-1}) == "LEVER" then
-        
-        BBAPI.intime(5.0,counterbraincoral3,event)
-    
-    elseif BBAPI.getblock(event.placer,{event.x+1,event.y,event.z}) == "LEVER" then
-        
-        BBAPI.intime(5.0,counterbraincoral3,event)
-    
-    elseif BBAPI.getblock(event.placer,{event.x-1,event.y,event.z}) == "LEVER" then
+    if BBAPI.getblock(event.placer, {event.x, event.y, event.z+1}) == "LEVER" or BBAPI.getblock(event.placer, {event.x, event.y, event.z-1}) == "LEVER" or BBAPI.getblock(event.placer, {event.x+1, event.y, event.z}) == "LEVER" or
+    BBAPI.getblock(event.placer,{event.x-1,event.y,event.z}) == "LEVER" then
         
         BBAPI.intime(5.0,counterbraincoral3,event)
     end
 end
 
 function counterbraincoral3(event)
-    if BBAPI.getblock(event.placer,{event.x-1,event.y+1,event.z}) ~= "LIGHTNING_ROD" then
+    if BBAPI.getblock(event.placer,{event.x-1,event.y+1,event.z}) == "LIGHTNING_ROD" or BBAPI.getblock(event.placer,{event.x+1,event.y+1,event.z}) == "LIGHTNING_ROD" or
+    BBAPI.getblock(event.placer,{event.x,event.y+1,event.z-1}) == "LIGHTNING_ROD" or BBAPI.getblock(event.placer,{event.x,event.y+1,event.z+1}) == "LIGHTNING_ROD" then
+        BBAPI.log("lever countered")
+    else
         BBAPI.execute("kill "..event.opps.name)
-        BBAPI.log("brain1")
-
-    elseif BBAPI.getblock(event.placer,{event.x+1,event.y+1,event.z}) ~= "LIGHTNING_ROD" then
-        BBAPI.execute("kill "..event.opps.name)
-        BBAPI.log("brain2")
-
-    elseif BBAPI.getblock(event.placer,{event.x,event.y+1,event.z-1}) ~= "LIGHTNING_ROD" then
-        BBAPI.execute("kill "..event.opps.name)
-        BBAPI.log("brain3")
-
-    elseif BBAPI.getblock(event.placer,{event.x,event.y+1,event.z+1}) ~= "LIGHTNING_ROD" then
-        BBAPI.execute("kill "..event.opps.name)
-        BBAPI.log("brain4")
+        BBAPI.log("brain coral won")
     end
 end
 
@@ -253,9 +230,3 @@ function countercarvedpumpkinwall(arguments)
                 BBAPI.settime(event.placer,18000)
                 end
             end
-        
-        
-    
-
-
-
