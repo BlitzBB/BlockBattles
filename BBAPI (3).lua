@@ -22,10 +22,10 @@ function random(min, max)
 
 end
 
----@param player table one of the players in the match
+---@param world string name of the world
 ---@param position table a three value array representing the position to query
 ---@return string material the material in that location
-function getblock(player, position)
+function getblock(world, position)
 
 end
 
@@ -35,34 +35,34 @@ function getposition(player)
 
 end
 
----@param player table one of the players in the match
+---@param world string name of the world
 ---@param material string the material to check for
 ---@param positions table an array containing two arrays representing the start and end position
 ---@return boolean full a boolean representing whether or not the area is completely full of the material
-function checkarea(player, material, positions)
+function checkarea(world, material, positions)
 
 end
 
----@param player table one of the players in the match
+---@param world string name of the world
 ---@param scenename string the name of the scene to switch to
-function setscene(player, scene)
+function setscene(world, scene)
 
 end
----@param player table one of the players in the match
+---@param world string name of the world
 ---@param time number The time to setin ticks
-function settime(player, time)
+function settime(world, time)
 
 end
----@param player table one of the players in the match
+---@param world string name of the world
 ---@param weather string "rain" or "thunder" or "clear"
-function setweather(player, weather)
+function setweather(world, weather)
 
 end
 
----@param player table one of the players in the match
+---@param world string name of the world
 ---@param position table a three value array representing the position to set
 ---@param material string the material to place there
-function setblock(player, position, material)
+function setblock(world, position, material)
 
 end
 
