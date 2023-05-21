@@ -1,5 +1,5 @@
 function on_place(event)
-    
+    BBAPI.log(event.meta)
     BBAPI.log(event.material)
     if event.material == "BRAIN_CORAL_BLOCK" then
         BBAPI.log("coral")
@@ -179,12 +179,48 @@ function on_place(event)
         BBAPI.setblock(event.placer.world, {event.x, event.y, event.z -1 }, "AIR") 
         BBAPI.setblock(event.placer.world, {event.x, event.y, event.z}, "AIR")
         end
-    elseif event.material == "TNT" then
+    elseif event.material == "BROWN_CARPET" then
         
-        BBAPI.setscene(event.placer.world, "fireworkwarp")
+        if BBAPI.getblock(event.placer.world, {event.x + 1, event.y, event.z }) == "BROWN_CANDLE" and
+        BBAPI.getblock(event.placer.world, {event.x - 1, event.y, event.z }) == "BROWN_CANDLE" and
+        BBAPI.getblock(event.placer.world, {event.x, event.y, event.z + 1 }) == "BROWN_CANDLE" and
+        BBAPI.getblock(event.placer.world, {event.x, event.y, event.z -1 }) == "BROWN_CANDLE" then
+        for i = 0, event.placer.luck, 1 do
+            if BBAPI.random(0, 1) > 0.5 then
+                BBAPI.setslot(event.placer, {"inventory", 38}, {amount=1, material="LEATHER_CHESTPLATE"})
+                break
+            else
+
+            end
+        end  
+        BBAPI.setblock(event.placer.world, {event.x - 1, event.y, event.z }, "AIR")  
+        BBAPI.setblock(event.placer.world, {event.x, event.y, event.z + 1 }, "AIR")   
+        BBAPI.setblock(event.placer.world, {event.x, event.y, event.z -1 }, "AIR") 
+        BBAPI.setblock(event.placer.world, {event.x + 1, event.y, event.z }, "AIR") 
+        BBAPI.setblock(event.placer.world, {event.x, event.y, event.z}, "AIR")
+        BBAPI.switchturn(event.placer.uuid)
+        end
+    elseif event.material == "BROWN_MUSHROOM_BLOCK" then
+        BBAPI.execute("effect give "..event.placer.uuid.." speed 30 3")
+        BBAPI.switchturn(event.placer.uuid)
+    elseif event.material == "ENCHANTING_TABLE" then
+        BBAPI.execute("effect give "..event.opps.uuid.." blindness 30 10")
+        BBAPI.switchturn(event.placer.uuid)
+    elseif event.material == "DRAGON_HEAD" or event.material == "PINK_BED" or event.material == "RED_CANDLE" then
+        BBAPI.execute("effect clear "..event.placer.uuid.." blindness")   
+        BBAPI.switchturn(event.placer.uuid)
     end
 end
 
+function on_spawn(event)
+    BBAPI.setscene(event.entity.world, "bookwarp")
+    BBAPI.setweather(event.entity.world, "rain")
+end
+
+function on_projectile_hit(event)
+    BBAPI.log(event.launched.type)
+    BBAPI.setscene(event.launched.world, "amethyst")
+end
 
 
 
