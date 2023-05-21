@@ -1,0 +1,37 @@
+ec4ad3d2-550d-318a-9b40-a4ffa96a9d3e:
+- v: 3337
+  type: ENCHANTING_TABLE
+  meta:
+    ==: ItemMeta
+    meta-type: TILE_ENTITY
+    lore:
+    - '{"text":"To be used in block battles..."}'
+    blockMaterial: ENCHANTING_TABLE
+- v: 3337
+  type: BROWN_MUSHROOM_BLOCK
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    lore:
+    - '{"text":"To be used in block battles..."}'
+- v: 3337
+  type: PINK_BED
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    lore:
+    - '{"text":"To be used in block battles..."}'
+- v: 3337
+  type: RED_CANDLE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    lore:
+    - '{"text":"To be used in block battles..."}'
+- v: 3337
+  type: DRAGON_HEAD
+  meta:
+    ==: ItemMeta
+    meta-type: SKULL
+    lore:
+    - '{"text":"To be used in block battles..."}'
